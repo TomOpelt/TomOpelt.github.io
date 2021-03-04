@@ -1,0 +1,204 @@
+body{
+    background-color: whitesmoke;
+}
+#main{
+    background-color:whitesmoke;
+    
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+#box{
+    background-color: slategray;
+    
+    width: 60vh;
+    height: 70vh;
+    height: calc(var(--vh, 1vh) * 70);
+}
+#kanabox{
+    background-color: white;
+    
+    width: 48vh;
+    height: 48vh;
+    height: calc(var(--vh, 1vh) * 48);
+    
+    margin-top: 17vh;
+    margin-top: calc(var(--vh, 1vh) * 17);
+    
+    position: absolute;
+}
+#kanabox{
+    text-align: center;
+    
+    font-size: 30vh;
+    font-size: calc(var(--vh, 1vh) * 30);
+}
+#inputbox{
+    width: 48vh;
+    height: 8vh;
+    height: calc(var(--vh, 1vh) * 8);
+    
+    margin-top: 5vh;
+    margin-top: calc(var(--vh, 1vh) * 5);
+    
+    position: absolute;
+}
+#input{
+    height:8vh;
+    height: calc(var(--vh, 1vh) * 8);
+    text-align: center;
+    box-shadow:none;
+    border:0;
+}
+#navbar1{
+    background-color: rgba(0,0,0,0.0);
+    margin-top: -95vh;
+    margin-top: calc(var(--vh, 1vh) * -95);
+    
+    height: 7vh;
+    height: calc(var(--vh, 1vh) * 7);
+    width: 100vw;
+    
+    position: fixed;
+}
+#navbar2{
+    background-color: rgba(0,0,0,0.0);
+    margin-top: -95vh;
+    margin-top: calc(var(--vh, 1vh) * -95);
+    
+    height: 7vh;
+    height: calc(var(--vh, 1vh) * 7);
+    width: 100vw;
+    
+    position: fixed;
+}
+#navbar3{
+    background-color: rgba(0,0,0,0.0);
+    margin-top: -11vh;
+    margin-top: calc(var(--vh, 1vh) * -11);
+    
+    height: 7vh;
+    height: calc(var(--vh, 1vh) * 7);
+    width: 100vw;
+    
+    position: fixed;
+}
+#navbar4{
+    background-color: rgba(0,0,0,0.0);
+    margin-top: -96vh;
+    margin-top: calc(var(--vh, 1vh) * -96);
+    
+    height: 7vh;
+    height: calc(var(--vh, 1vh) * 7);
+    width: 100vw;
+    
+    position: fixed;
+}
+#brandbox{
+    background-color: rgba(0,0,0,0.0);
+    
+    margin-left: 3vw;
+
+    text-align: center;
+/*    font-size: 6vh;*/
+    font-size: 6vw;
+    font-weight: bold;
+    color: slategray;
+    
+    padding-left:1vh;
+    padding-right:1vh;
+    
+    border-style: hidden;
+    border-color: slategray;
+    border-width: thick;
+}
+#homebox{
+/*    background-color: rgba(0,0,0,0.0);*/
+    
+    margin-right: 3vw;
+    
+    height: 5vw;
+    width: 5vw;
+    
+    text-align: center;
+    
+    outline:none;
+}
+#scorebox{
+    background-color: rgba(0,0,0,0.0);
+    color: red;
+    
+    min-width: 8vw;
+    
+    text-align: center;
+    font-size:9vh;
+    font-size: calc(var(--vh, 1vh) * 9);
+    font-weight: bold;
+    
+/*    border-style: solid;*/
+/*    border-color: slategray;*/
+/*    border-width: thick;*/
+}
+#optbox{
+    background-color: white;
+
+/*    margin-right: 0.1vw;*/
+    
+    text-align: center;
+/*    font-size: 3vh;*/
+    font-size: 4vw;
+    
+    padding-left:1vh;
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right:1vh;
+    padding-right: calc(var(--vh, 1vh) * 1);
+    
+    border-style: solid;
+    border-color: slategray;
+    border-width: thick;
+    
+    outline:none;
+}
+#dakubox{
+    background-color: white;
+
+/*    margin-right: 0.1vw;*/
+    
+    text-align: center;
+/*    font-size: 3vh;*/
+    font-size: 4vw;
+    
+    padding-left:1vh;
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right:1vh;
+    padding-right: calc(var(--vh, 1vh) * 1);
+    
+    border-style: solid;
+    border-color: slategray;
+    border-width: thick;
+    
+    outline:none;
+}
+#mute{
+    background-color: white;
+
+/*    margin-right: 5vw;*/
+    
+    text-align: center;
+/*    font-size: 3vh;*/
+    font-size: 4vw;
+    
+    padding-left:1vh;
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right:1vh;
+    padding-right: calc(var(--vh, 1vh) * 1);
+    
+    border-style: solid;
+    border-color: slategray;
+    border-width: thick;
+    
+    outline:none;
+}
+.module {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}

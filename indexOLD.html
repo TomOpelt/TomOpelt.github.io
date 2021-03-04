@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- lowLag Sound -->
+    
+    <script src="lowLag.js"></script>
+    <script src="sm2/js/soundmanager2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.0.min.js" integrity="sha256-jFdOCgY5bfpwZLi0YODkqNXQdIxKpm6y5O/fy0baSzE=" crossorigin="anonymous"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="indexOLDCSS.css" crossorigin="anonymous">
+    
+    <title>Login</title>
+</head>
+<body>
+    <script>
+        var id;
+        
+        function appHeight() {
+            const doc = document.documentElement
+            doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
+        }
+
+        window.addEventListener('resize', appHeight);
+        appHeight();
+        
+        function inputFocus (id){
+            document.getElementById(id).placeholder = '';
+        }
+        
+        function inputBlur (id){
+            if(document.getElementById(id).value == ''){
+                document.getElementById(id).value = '';
+                if(id == 'idInput'){
+                    document.getElementById(id).placeholder = 'ID';
+                }
+                if(id == 'passInput'){
+                    document.getElementById(id).placeholder = 'Password';
+                }
+            }
+        }
+        function JHelpF(){
+            location.href = "JHelp.html";
+        }
+        function loginClick(){
+            document.getElementById("loginButton").style.backgroundColor = "whitesmoke";
+            
+            loginTest();
+        }
+        function loginBlur(){
+            document.getElementById("loginButton").style.backgroundColor = "lightgrey";
+        }
+        function loginTest(){
+            //If this was to be implemented in a school environment, this would be done using encryption and a backend database. At the moment I do not have the funds to use these, so I will implement a stand-in system.
+            
+            if(document.getElementById("idInput").value == 'user1' && document.getElementById("passInput").value == 'password'){
+                console.log("yay");
+                location.href = "profile.html";
+            }
+        }
+    </script>
+    <div class="d-flex rounded justify-content-start align-items-center" id="JHelpBox">
+        <button class="rounded" onclick="JHelpF();" id="JHelp">JHelp</button>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" id="main">
+        <div class="d-flex justify-content-center align-items-center rounded" id="loginBox">
+            <input type="text" class="form-control" id="idInput" placeholder="ID" onfocus="inputFocus(this.id);" onblur="inputBlur(this.id);">
+            <input type="text" class="form-control" id="passInput" placeholder="Password" onfocus="inputFocus(this.id);" onblur="inputBlur(this.id);">
+            <button class="rounded" onclick="loginClick();" onblur="loginBlur();" id="loginButton">Login</button>
+        </div>
+    </div>
+</body>
+</html>

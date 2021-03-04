@@ -1,0 +1,63 @@
+body{
+    background-color: whitesmoke;
+}
+#JHelpBox{
+    background-color:whitesmoke;
+    
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+#JHelp{
+    background-color: white;
+    
+    text-align: center;
+    
+/*    font-size: 10vh;*/
+/*    font-size: calc(var(--vh, 1vh) * 10);*/
+    font-size: 5vw;
+    
+    margin-top: -20vh;
+    margin-top: calc(var(--vh, 1vh) * -20);
+    margin-left: 0.5vw;
+    
+    padding-left:1vh;
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right:1vh;
+    padding-right: calc(var(--vh, 1vh) * 1);
+    
+    border-style: solid;
+    border-color: slategray;
+    border-width: thick;
+    
+    outline:none;  
+}
+#SchoolQuizBox{
+    background-color:whitesmoke;
+    
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+#SchoolQuiz{
+    background-color: white;
+    
+    text-align: center;
+    
+/*    font-size: 10vh;*/
+/*    font-size: calc(var(--vh, 1vh) * 10);*/
+    font-size: 5vw;
+    
+    margin-top: -20vh;
+    margin-top: calc(var(--vh, 1vh) * -20);
+    margin-left: 0.5vw;
+    
+    padding-left:1vh;
+    padding-left: calc(var(--vh, 1vh) * 1);
+    padding-right:1vh;
+    padding-right: calc(var(--vh, 1vh) * 1);
+    
+    border-style: solid;
+    border-color: slategray;
+    border-width: thick;
+    
+    outline:none;  
+}

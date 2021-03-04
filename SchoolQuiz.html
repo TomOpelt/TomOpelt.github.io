@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- lowLag Sound -->
+    
+    <script src="lowLag/lowLag.js"></script>
+    <script src="lowLag/sm2/js/soundmanager2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.0.min.js" integrity="sha256-jFdOCgY5bfpwZLi0YODkqNXQdIxKpm6y5O/fy0baSzE=" crossorigin="anonymous"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" width="device-width">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="SchoolQuizCSS.css" crossorigin="anonymous">
+    
+    <title>School Quiz</title>
+</head>
+<body>
+    <script>        
+        var qN = 0;
+        var aN = 0;
+        
+        var qL;
+        
+        var score = 0;
+        
+//        lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+//        lowLag.load(['rsc/succ.mp3'],'succ');
+//        lowLag.load(['rsc/fail.mp3'],'fail');
+        
+        function loadDocQ(){
+//            console.log("loadDoc called");
+            
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                chooseQ(this);
+            }
+        };
+        xhttp.open("GET", "xml/questions.xml", true);
+        xhttp.send();
+        }
+        function chooseQ(xml){
+            xmlDoc = xml.responseXML;
+
+            q = xmlDoc.getElementsByTagName("q");
+            
+            while(this.qN == this.qL){
+                this.qN = Math.floor(Math.random() * q.length);
+            }
+            document.getElementById("qt").innerHTML = q[qN].getElementsByTagName("qt")[0].childNodes[0].nodeValue;
+            
+            this.qL = this.qN;
+            
+            console.log("qN = "+ qN);
+
+        }
+        function loadDocA(){
+//            console.log("loadDoc called");
+            
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        setA(this);
+                    }
+                };
+            xhttp.open("GET", "xml/questions.xml", true);
+            xhttp.send();
+        }
+        function setA(xml){
+            xmlDoc = xml.responseXML;
+            
+            q = xmlDoc.getElementsByTagName("q");
+            
+            var tempRand = 0;
+            
+            this.aN = Math.floor(Math.random() * 3);
+            
+            console.log("aN = "+ aN);
+            
+            if(aN == 0){
+                document.getElementById("q1").innerHTML = q[qN].getElementsByTagName("a")[0].childNodes[0].nodeValue;
+                
+                tempRand = Math.floor(Math.random() * 2);
+                
+                if(tempRand == 0){
+                    document.getElementById("q2").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                    document.getElementById("q3").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                } else {
+                    document.getElementById("q2").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                    document.getElementById("q3").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                }
+            } else if(aN == 1){
+                document.getElementById("q2").innerHTML = q[qN].getElementsByTagName("a")[0].childNodes[0].nodeValue;
+                
+                tempRand = Math.floor(Math.random() * 2);
+                
+                if(tempRand == 0){
+                    document.getElementById("q1").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                    document.getElementById("q3").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                } else {
+                    document.getElementById("q1").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                    document.getElementById("q3").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                }
+            } else if(aN == 2){
+                document.getElementById("q3").innerHTML = q[qN].getElementsByTagName("a")[0].childNodes[0].nodeValue;
+                
+                tempRand = Math.floor(Math.random() * 2);
+                
+                if(tempRand == 0){
+                    document.getElementById("q1").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                    document.getElementById("q2").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                } else {
+                    document.getElementById("q1").innerHTML = q[qN].getElementsByTagName("fa2")[0].childNodes[0].nodeValue;
+                    document.getElementById("q2").innerHTML = q[qN].getElementsByTagName("fa1")[0].childNodes[0].nodeValue;
+                }
+            }
+        }
+        function checkA1(){
+            if(aN == 0){
+                score++;
+                loadDocQ();
+                loadDocA();
+                document.getElementById("score").style.color = "lime";
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/succ.mp3'],'succ');
+                lowLag.play('succ');
+            } else {
+                if(score == 0){
+                    score = 0;
+                } else {
+                    score--;
+                }
+                loadDocQ();
+                loadDocA();
+                if(score == 0){
+                    document.getElementById("score").style.color = "red";
+                } else {
+                    document.getElementById("score").style.color = "lime";
+                }
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/fail.mp3'],'fail');
+                lowLag.play('fail');
+            }
+//            console.log("Score: "+ score);
+            document.getElementById("score").innerHTML = score;
+        }
+        function checkA2(){
+            if(aN == 1){
+                score++;
+                loadDocQ();
+                loadDocA();
+                document.getElementById("score").style.color = "lime";
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/succ.mp3'],'succ');
+                lowLag.play('succ');
+            } else {
+                if(score == 0){
+                    score = 0;
+                } else {
+                    score--;
+                }
+                loadDocQ();
+                loadDocA();
+                if(score == 0){
+                    document.getElementById("score").style.color = "red";
+                } else {
+                    document.getElementById("score").style.color = "lime";
+                }
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/fail.mp3'],'fail');
+                lowLag.play('fail');
+            }
+//            console.log("Score: "+ score);
+            document.getElementById("score").innerHTML = score;
+        }
+        function checkA3(){
+            if(aN == 2){
+                score++;
+                loadDocQ();
+                loadDocA();
+                document.getElementById("score").style.color = "lime";
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/succ.mp3'],'succ');
+                lowLag.play('succ');
+            } else {
+                if(score == 0){
+                    score = 0;
+                } else {
+                    score--;
+                }
+                loadDocQ();
+                loadDocA();
+                if(score == 0){
+                    document.getElementById("score").style.color = "red";
+                } else {
+                    document.getElementById("score").style.color = "lime";
+                }
+                lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                lowLag.load(['rsc/fail.mp3'],'fail');
+                lowLag.play('fail');
+            }
+//            console.log("Score: "+ score);
+            document.getElementById("score").innerHTML = score;
+        }
+        function homeClick (){
+            location.href = "index.html";
+        }
+        function init(){
+//            console.clear();
+            
+            loadDocQ();
+            loadDocA();
+        }
+        //-----Height Function-----
+        function appHeight() {
+            const doc = document.documentElement
+            doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
+        }
+
+        window.addEventListener('resize', appHeight);
+        appHeight();
+        
+        window.onload = init;
+    </script>
+    <div class="d-flex justify-content-center align-items-center" id="main">
+        <div class="d-flex justify-content-center align-items-center rounded" id="box">
+            <div class="d-flex justify-content-start align-items-center rounded" id="qt"></div>
+            <button class="d-flex justify-content-center align-items-center rounded" id="q1" onclick="checkA1();"></button>
+            <button class="d-flex justify-content-center align-items-center rounded" id="q2" onclick="checkA2();"></button>
+            <button class="d-flex justify-content-center align-items-center rounded" id="q3" onclick="checkA3();"></button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center" id="titleBox">
+        <p class="rounded" id="title">School Quiz</p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" id="scoreBox">
+        <p class="rounded" id="score">0</p>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" id="homeBox">
+        <input type="image" src="rsc/home.svg" onclick="homeClick();" id="home"> 
+    </div>
+    <div>
+    
+    </div>
+</body>
+</html>

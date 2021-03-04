@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<REGISTER>
+    <STUDENT>
+        <ID>KeiT001</ID>
+        <PASSWORD>ABC123</PASSWORD>
+        <FIRST>Keita</FIRST>
+        <LAST>Takahashi</LAST>
+        <SCORE>95</SCORE>
+    </STUDENT>
+    <STUDENT>
+        <ID>AoiM007</ID>
+        <PASSWORD>AA1997</PASSWORD>
+        <FIRST>Aoi</FIRST>
+        <LAST>Mori</LAST>
+        <SCORE>60</SCORE>
+    </STUDENT>
+    <STUDENT>
+        <ID>SakH002</ID>
+        <PASSWORD></PASSWORD>
+        <FIRST>Sakura</FIRST>
+        <LAST>Harada</LAST>
+        <SCORE>99</SCORE>
+    </STUDENT>
+    <STUDENT>
+        <ID>ShiY012</ID>
+        <PASSWORD></PASSWORD>
+        <FIRST>Shigeru</FIRST>
+        <LAST>Yamamoto</LAST>
+        <SCORE>55</SCORE>
+    </STUDENT>
+</REGISTER>

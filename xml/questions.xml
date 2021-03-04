@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <q>
+        <qt>What is 水 in English?</qt>
+        <a>Water</a>
+        <fa1>Watter</fa1>
+        <fa2>Woter</fa2>
+    </q>
+    <q>
+        <qt>What is the past tense form of "See"?</qt>
+        <a>Saw</a>
+        <fa1>Sawn</fa1>
+        <fa2>Seed</fa2>
+    </q>
+    <q>
+        <qt>What is the future tense form of "should"?</qt>
+        <a>Shall</a>
+        <fa1>Shoulder</fa1>
+        <fa2>Shan't</fa2>
+    </q>
+</list>

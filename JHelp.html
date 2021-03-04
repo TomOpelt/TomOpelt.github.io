@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- lowLag Sound -->
+    
+    <script src="lowLag/lowLag.js"></script>
+    <script src="lowLag/sm2/js/soundmanager2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.0.min.js" integrity="sha256-jFdOCgY5bfpwZLi0YODkqNXQdIxKpm6y5O/fy0baSzE=" crossorigin="anonymous"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="JHelpCSS.css" crossorigin="anonymous">
+    
+    <title>Kana Test</title>
+</head>
+<body>
+    <script>
+        var hira = ["あ","い","う","え","お","か","き","く","け","こ","さ","し","す","せ","そ","た","ち","つ","て","と","な","に","ぬ","ね","の","は","ひ","ふ","へ","ほ","ま","み","む","め","も","や","ゆ","よ","ら","り","る","れ","ろ","わ","を","ん","が","ぎ","ぐ","げ","ご","ざ","じ","ず","ぜ","ぞ","だ","ぢ","づ","で","ど","ば","び","ぶ","べ","ぼ","ぱ","ぴ","ぷ","ぺ","ぽ"]
+        var kata = ["ア","イ","ウ","エ","オ","カ","キ","ク","ケ","コ","サ","シ","ス","セ","ソ","タ","チ","ツ","テ","ト","ナ","ニ","ヌ","ネ","ノ","ハ","ヒ","フ","ヘ","ホ","マ","ミ","ム","メ","モ","ヤ","ユ","ヨ","ラ","リ","ル","レ","ロ","ワ","ヲ","ン","ガ","ギ","グ","ゲ","ゴ","ザ","ジ","ズ","ゼ","ゾ","ダ","ヂ","ヅ","デ","ド","バ","ビ","ブ","ベ","ボ","パ","ピ","プ","ペ","ポ"]
+        var roman = ["a","i","u","e","o","ka","ki","ku","ke","ko","sa","shi","su","se","so","ta","chi","tsu","te","to","na","ni","nu","ne","no","ha","hi","fu","he","ho","ma","mi","mu","me","mo","ya","yu","yo","ra","ri","ru","re","ro","wa","o","n","ga","gi","gu","ge","go","za","ji","zu","ze","zo","da","ji","zu","de","do","ba","bi","bu","be","bo","pa","pi","pu","pe","po"]
+        var romanC = ["A","I","U","E","O","Ka","Ki","Ku","Ke","Ko","Sa","Shi","Su","Se","So","Ta","Chi","Tsu","Te","To","Na","Ni","Nu","Ne","No","Ha","Hi","Fu","He","Ho","Ma","Mi","Mu","Me","Mo","Ya","Yu","Yo","Ra","Ri","Ru","Re","Ro","Wa","O","N","Ga","Gi","Gu","Ge","Go","Za","Ji","Zu","Ze","Zo","Da","Ji","Zu","De","Do","Ba","Bi","Bu","Be","Bo","Pa","Pi","Pu","Pe","Po"]
+        
+        var score = 0;
+        var kanaID = 0;
+        var lastKanaID = 0;
+        
+        var kataOn = false;
+        var dakuOn = false;
+        var mute = false;
+        
+//        lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+//        lowLag.load(['rsc/succ.mp3'],'succ');
+//        lowLag.load(['rsc/fail.mp3'],'fail');
+        
+        function init() {
+            console.clear();
+            
+            kanaID = Math.floor(Math.random() * 46);
+            
+            document.getElementById("kana").innerHTML = hira[kanaID];
+        }
+        
+        function enterF(kan) {
+            if(event.key === 'Enter') {
+                if(kan.value == roman[kanaID] || kan.value == romanC[kanaID]) {
+                    //SUCCESS
+                    score++;
+                    document.getElementById("scorebox").innerHTML = score;
+                    document.getElementById("scorebox").style.color = "lime";
+                    
+                    lastKanaID = kanaID;
+                    
+                    while(kanaID == lastKanaID){
+                        if(dakuOn == false){
+                            kanaID = Math.floor(Math.random() * 46);
+                        } else {
+                            kanaID = Math.floor(Math.random() * hira.length);
+                        }
+                    }
+                    if(kataOn == false){
+                        document.getElementById("kana").innerHTML = hira[kanaID];
+                    } else {
+                        document.getElementById("kana").innerHTML = kata[kanaID];
+                    }
+                    
+                    if(mute == false){
+                        lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                        lowLag.load(['rsc/succ.mp3'],'succ');
+                        lowLag.play('succ');
+                    }
+                    
+                }else{
+                    //FAILURE
+                    score = 0;
+                    document.getElementById("scorebox").innerHTML = score;
+                    document.getElementById("scorebox").style.color = "red";
+                    
+                    if(mute == false){
+                        lowLag.init('lowLag/sm2/swf/soundmanager2.swf');
+                        lowLag.load(['rsc/fail.mp3'],'fail');
+                        lowLag.play('fail');
+                    }
+                    
+                }
+                
+                //console.log(score);
+                document.getElementById('input').value = '';
+            }
+        }
+        function homeClick (){
+            location.href = "index.html";
+        }
+        
+        function onFocus (){
+            document.getElementById('input').placeholder = '';
+            
+        }
+        
+        function onBlurF (){
+            document.getElementById('input').value = '';
+            document.getElementById('input').placeholder = 'type here...';
+        }
+        
+        function kataButton (){
+            score = 0;
+            document.getElementById("scorebox").innerHTML = score;
+            document.getElementById("scorebox").style.color = "red";
+            
+            if(kataOn == false){
+                document.getElementById("kana").innerHTML = kata[kanaID];
+                document.getElementById("optbox").style.backgroundColor = "black";
+                document.getElementById("optbox").style.color = "white";
+            } else{
+                document.getElementById("kana").innerHTML = hira[kanaID];
+                document.getElementById("optbox").style.backgroundColor = "white";
+                document.getElementById("optbox").style.color = "black";
+            }
+            
+            kataOn = !kataOn;
+        }
+        
+        function dakuButton (){
+            if(dakuOn == false){
+                document.getElementById("dakubox").style.backgroundColor = "black";
+                document.getElementById("dakubox").style.color = "white";
+            } else {
+                document.getElementById("dakubox").style.backgroundColor = "white";
+                document.getElementById("dakubox").style.color = "black";
+                
+                kanaID = Math.floor(Math.random() * 46);
+                if(kataOn == false){
+                    document.getElementById("kana").innerHTML = hira[kanaID];
+                } else {
+                    document.getElementById("kana").innerHTML = kata[kanaID];
+                }
+                
+                score = 0;
+                document.getElementById("scorebox").innerHTML = score;
+                document.getElementById("scorebox").style.color = "red";
+            }
+            dakuOn = !dakuOn;
+        }
+        
+        function muteButton(){
+            if(mute == false){
+                document.getElementById("mute").style.backgroundColor = "black";
+                document.getElementById("mute").style.color = "white";
+            } else {
+                document.getElementById("mute").style.backgroundColor = "white";
+                document.getElementById("mute").style.color = "black";
+            }
+            mute = !mute;
+        }
+        
+        function appHeight() {
+            const doc = document.documentElement
+            doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
+        }
+
+        window.addEventListener('resize', appHeight);
+        appHeight();
+        
+        window.onload = init;
+    </script>
+    
+    <div class="d-flex justify-content-center align-items-center" id="main">
+        <div class="d-flex justify-content-center rounded" id="box">
+            <div class="d-flex justify-content-center align-items-center rounded" id="kanabox">
+                <p id="kana"></p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" id="inputbox">
+                <input type="text" class="form-control" id="input" placeholder="type here..." onfocus="onFocus();" onblur="onBlurF();" onkeydown="enterF(this)">
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center" id="navbar1">
+        <p class="rounded" id="brandbox">Kana Test</p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" id="navbar2">
+        <p class="rounded" id="scorebox">0</p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" id="navbar3">
+        <button class="rounded" id="optbox" onclick="kataButton();">Katakana</button>
+        <button class="rounded" id="dakubox" onclick="dakuButton();">Dakuten</button>
+        <button class="rounded" id="mute" onclick="muteButton();">Mute</button>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" id="navbar4">
+        <input type="image" src="rsc/home.svg" onclick="homeClick();" id="homebox"> 
+    </div>
+</body>
+</html>
